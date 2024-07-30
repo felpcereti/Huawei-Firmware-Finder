@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firm Finder Users Submissions</title>
+	<meta name="description" content="Quickly, easily and freely find your Huawei phone's firmware. HiSuite Proxy's official integrated firmware finder."/>
+	<meta name="keywords" content="Huawei Phones' Firm, Firmware, Firmware Finder, Huawei Firmware Finder, FirmFinder, Huawei Phone Android, Huawei Phone Firm, Huawei Firmware, Huawei Mate, Huawei P, Huawei Nova, Honor Firm, Honor FirmFinder, Honor Phone Firmware, Honor Firmware Finder, LGRP-OVS, EMUI 9, EMUI 8, EMUI 10, EMUI 11, EMUI 7">
+    <meta charset="utf-8">
+    <meta name="twitter:card" content="summary" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="robots" content="noindex, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	<meta name="theme-color" content="#0e5551" />
+	<meta property="og:locale" content="en_gb" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Firm Finder Users Submissions" />
+	<meta property="og:description" content="Quickly, easily and freely find your Huawei phone's firmware. HiSuite Proxy's official integrated firmware finder." />
+	<meta property="og:site_name" content="Firm Finder Users Submissions" />
+	<meta property="og:image" content="https://uupload.ir/files/fun_tw5a_screenshot_20210403-114103_chrome.jpg" />
+	<meta property="og:image:width" content="350" />
+	<meta property="og:image:height" content="511" />
+	<meta name="google-site-verification" content="9iRzaidStgp2j0XBAOZMKa97EhRhJJjfmDq36v2am1g" />
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css?v=10">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/mainobfu.js?v=9"></script>
+	<script>let searchingRoms = true;</script>
+	
+	<!--
+	<script type='text/javascript' src='//pl16894379.safestgatetocontent.com/76/59/b7/7659b789101976dc08054f9cb6803283.js'></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL1NGK6WT2"></script>
+	<script>
+		
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-LL1NGK6WT2');
+	</script>-->
+</head>
+<body onresize="AdjustElements()">
+	<style>
+	tr
+	{
+		text-align: center;
+	}
+	
+	tbody > tr > td:last-child
+	{
+		text-align: right;
+	}
+	
+	.romBox
+	{
+		width: 100%;
+		/* text-align: center; */
+		padding: 15px 10px 10px 10px;
+		background-color: white;
+		/* border-radius: 4px 4px 0px 0px; */
+		color: black;
+		font-weight: bold;
+		border-radius: 4px;
+		transition: opacity 0.7s ease;
+		opacity: 0;
+		white-space: pre;
+		margin-bottom: 5px;
+	}
+	
+	.romboxTitle
+	{
+		text-align: center;
+	}
+	
+	.romboxOrange, .romBoxWarning
+	{
+		color: #e69500;
+	}
+	.romboxGreen
+	{
+		color: #00b386;
+	}
+	
+	.romBoxWarning
+	{
+		text-align: center;
+		font-size: 0.88rem;
+		margin-top: -30px;
+	}
+	
+	.buttonBox
+	{
+		text-align: right;
+		margin-top: 10px;
+	}
+		
+	.bottomad
+	{	
+		position: fixed;
+		max-width: calc(100% - 20px);
+		overflow: auto;	
+		bottom: 10px;
+		left: 50%;
+		transform: translate(-50%, 0);
+		border-radius: 4px;
+	}
+		
+	.adframe
+	{
+		border: none;
+		width: 468px;
+		height: 60px;
+		border: none;
+	}
+	
+	.submission
+	{
+		display: none;
+	}
+	</style>
+    <div class="holder">
+        <div class="container">
+            <h1 style="font-family: VeganFont; display: inline;">Users Submissions</h1>
+            <form style="margin-top: 15px;">
+                <div class="input-group mb-3">
+                    <input type="text" id="inputmodel" oninput="InputChanged()" class="form-control inputStyle" placeholder="Phone Model">
+                    <input type="text" id="inputregion" oninput="InputChanged()" class="form-control inputStyle" placeholder="Region ( CXXX )">
+                    <input type="text" id="inputvendor" oninput="InputChanged()" class="form-control inputStyle" placeholder="Vendor/Country (hw-eu)">
+                    <input type="text" id="inputversion" oninput="InputChanged()" class="form-control inputStyle" placeholder="Target Version">
+                </div>
+            </form>
+            <div style="overflow: auto; max-width: 100vw">
+                <table class="table" style="background-color: rgba(0, 0, 0, 0.3); border-radius: 5px; min-width: 753px;">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+							<th>Region</th>
+                            <th title="The BuildNumber that gets installed on your phone">OS Target</th>                            
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-family: ComicSans; overflow: auto" id="dataTable" onscroll="scrolledDown()">
+                        <tr>
+							<td>
+								<div class="progress">
+								  <div class="progress-bar" id="pbar" style="width:0%"></div>
+								</div>
+							</td>
+						</tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+	
+	<div class="submission">
+        <div class="container">
+            <h1 style="font-family: VeganFont; display: inline;">Users Submissions</h1>
+            <form style="margin-top: 15px;">
+                <div class="input-group mb-3">
+                    <input type="text" name="phonebuildnumber" id="firmbnumber" oninput="BuildNumberReview()" class="form-control inputStyle" style="min-width: 320px !important;" placeholder="BLA-L29-LGRP2 102.0.0.225(C185E3R1P1)">
+					<input type="text" autocomplete="off" id="firmdevice" class="form-control inputStyle" style="min-width: 110px !important;" placeholder="BLA-L29">
+                    <input type="text" autocomplete="off" id="firmregion" class="form-control inputStyle" style="min-width: 80px !important;" placeholder="C185">
+                    <input type="text" autocomplete="off" id="firmvendor" class="form-control inputStyle" style="min-width: 150px !important;" placeholder="hw-meafnaf">
+                    <input type="text" autocomplete="off" id="firmbase" class="form-control inputStyle" style="min-width: 250px !important;" placeholder="BLA-LGRP2-OVS 102.0.0.225">
+					<input type="text" autocomplete="off" id="firmcust" class="form-control inputStyle" style="min-width: 250px !important;" placeholder="BLA-L29-CUST 102.0.0.3(C185)">
+					<input type="text" autocomplete="off" id="firmpreload" class="form-control inputStyle" style="min-width: 250px !important;" placeholder="BLA-L29-PRELOAD 102.0.0.1(C185R1)">
+                </div>			
+            </form>
+			<span class="subSpan"></span>
+			<button class="subbutton" onclick="submitFirmware()">Submit</button>         
+        </div>
+    </div>
+    <div class="databasesBox">
+		Database
+		<hr>
+		<div class="databasesText">
+			<a href="https://professorjtj.github.io/BaseArchive/" target="_blank">Base Firms</a>
+			<a href="http://ffusersubmission.byethost17.com/" target="_blank">User Firms</a>
+			<a href="https://professorjtj.github.io/Downgrade/" target="_blank">Downgrades</a>
+			<a href="http://professorjtj.github.io/" target="_blank">v1 Firmwares</a>
+			<a href="http://professorjtj.github.io/v2/" target="_blank">v2 Firmwares</a>
+		</div>
+	</div>
+	<div class="floatingthingy">
+	</div>
+	<img class="telegram" alt="Support" title="Support" onclick="window.open('https://t.me/firmfinder')" src="img/telegram.png"/>
+	<img class="guide" alt="Guide Booklet" title="Guide Booklet" onclick="window.open('https://github.com/ProfessorJTJ/HISuite-Proxy/wiki/Complete-Guide')" src="img/guide.png"/>
+	<img onclick="switchPage(this);" class="liteyt" alt="Submit" src="img/submission.png"/>
+	<div style="z-index: 1; font-family: ComicSans; position: fixed; bottom: 47px; cursor: pointer; left: 0px; background-color: rgba(255, 255, 255, 0.9); font-size: 0.85em; padding: 2px 7px 5px 4px; border-radius: 0px 10px 10px 0px;" onclick="window.location = 'https://professorjtj.github.io/v2/';">
+		<div class="spinner-grow spinner-grow-sm text-info"></div> Firm Finder v2
+	</div>
+	<div style="z-index: 1; font-family: ComicSans; position: fixed; bottom: 13px; cursor: pointer; left: 0px; background-color: rgba(255, 255, 255, 0.9); font-size: 0.85em; padding: 2px 7px 5px 4px; border-radius: 0px 10px 10px 0px;" onclick="window.location = 'https://professorjtj.github.io/';">
+		<div class="spinner-grow spinner-grow-sm text-danger"></div> Normal Archive
+	</div>
+	<span id="notificationSpan"></span>
+	<script>
+		atOptions = {
+				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
+				'format' : 'iframe',
+				'height' : 60,
+				'width' : 468,
+				'params' : {}
+		};
+	</script>
+	<!--
+	<div class="bottomad" style="border-radius: unset;">
+		<a href="https://liteytdownloader.github.io/" target="_blank"><img style="width: 468px; height: 60px" src="https://www.upsara.com/do.php?img=18943" />
+		</a>
+	</div>
+	
+	<div class="bottomad">
+	
+		<script type="text/javascript" async src="//kalganautographeater.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js">
+		</script>-
+	</div>
+	<script type="text/javascript">
+		var targetDOM = document.querySelector(".bottomad");
+		let realAppend = targetDOM.insertBefore;
+		targetDOM.insertBefore = function()
+		{
+			if (arguments[0].tagName == "IFRAME")
+				arguments[0].sandbox = "allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation-by-user-activation";
+			realAppend.apply(this, arguments);
+		};
+		
+		setInterval(function() {
+			atOptions = {
+				'key' : '768ff70ce3f8d4c3f41f6edf745f53d6',
+				'format' : 'iframe',
+				'height' : 60,
+				'width' : 468,
+				'params' : {}
+			};
+			
+			targetDOM.innerHTML = "";
+			
+			let newScript = document.createElement("script");
+			newScript.type = "text/javascript";
+			newScript.async = true;
+			newScript.src = "//kalganautographeater.com/768ff70ce3f8d4c3f41f6edf745f53d6/invoke.js";
+			targetDOM.appendChild(newScript);
+		}, 30000);
+	</script>
+	-->
+</body>
+</html>
+
+<script>
+/*
+	(function() {
+		let weblogPosts = [
+			["NF - Mama", "https://musichub.loxblog.com/post/208"],
+			["NF Ft. Julia Michaels - Gone", "https://musichub.loxblog.com/post/207"],
+			["NF - Careful", "https://musichub.loxblog.com/post/206"],
+			["YoungBoy Never Broke Again Ft. Nicki Minaj - WTF", "https://musichub.loxblog.com/post/205"],
+			["NF - Running", "https://musichub.loxblog.com/post/204"],
+			["NF - Happy", "https://musichub.loxblog.com/post/203"],
+			["Post Malone - Love/Hate Letter To Alcohol", "https://musichub.loxblog.com/post/202"],
+			["Taylor Swift - Sweet Nothing", "https://musichub.loxblog.com/post/201"],
+			["Asake - 2:30 Song", "https://musichub.loxblog.com/post/200"],
+			["Tyler, The Creator - Wharf Talk", "https://musichub.loxblog.com/post/199"],
+			["Halsey - Honesty", "https://musichub.loxblog.com/post/198"],
+			["Davido Ft. Musa Keys - Unavailable", "https://musichub.loxblog.com/post/197"],
+			["Davido - Over Dem", "https://musichub.loxblog.com/post/196"],
+			["Melanie Martinez - Pluto", "https://musichub.loxblog.com/post/195"],
+			["Melanie Martinez - Powder", "https://musichub.loxblog.com/post/194"],
+			["Melanie Martinez - Milk of The Siren", "https://musichub.loxblog.com/post/193"],
+			["Davido - Feel", "https://musichub.loxblog.com/post/192"],
+			["Davido Ft. Asake - No Competition", "https://musichub.loxblog.com/post/191"],
+			["Lana Del Rey - A&W", "https://musichub.loxblog.com/post/190"],
+			["Taylor Swift - Red (Taylor's Version)", "https://musichub.loxblog.com/post/189"],
+			["Post Malone - I Cannot Be (A Sadder Song)", "https://musichub.loxblog.com/post/188"],
+			["Taylor Swift - We Are Never Ever Getting Back Together", "https://musichub.loxblog.com/post/187"],
+			["Halsey - Bad At Love", "https://musichub.loxblog.com/post/186"],
+			["Post Malone - Lemon Tree", "https://musichub.loxblog.com/post/185"],
+			["Drake - Rescue Me", "https://musichub.loxblog.com/post/184"],
+			["Melanie Martinez - Light Shower", "https://musichub.loxblog.com/post/183"],
+			["Melanie Martinez - Tunnel Vision", "https://musichub.loxblog.com/post/182"],
+			["Tones And I - I Am Free", "https://musichub.loxblog.com/post/181"],
+			["Melanie Martinez - The Contortionist", "https://musichub.loxblog.com/post/180"],
+			["Melanie Martinez - Void", "https://musichub.loxblog.com/post/179"],
+			["Rod Wave - Fight The Feeling", "https://musichub.loxblog.com/post/178"],
+			["Melanie Martinez - Spider Web", "https://musichub.loxblog.com/post/177"],
+			["Melanie Martinez - Nymphology", "https://musichub.loxblog.com/post/176"],
+			["Melanie Martinez - Evil", "https://musichub.loxblog.com/post/175"],
+			["Tyler, The Creator - Heaven To Me", "https://musichub.loxblog.com/post/174"],
+			["Post Malone - Insane", "https://musichub.loxblog.com/post/173"],
+			["Aitana - Los Ángeles", "https://musichub.loxblog.com/post/172"],
+			["G-Eazy - Tulips & Roses", "https://musichub.loxblog.com/post/171"],
+			["Tyler, The Creator - Sorry Not Sorry", "https://musichub.loxblog.com/post/170"],
+			["Halsey - Ashley", "https://musichub.loxblog.com/post/169"],
+			["The Weeknd ft. Lil Wayne - I Heard You're Married", "https://musichub.loxblog.com/post/168"],
+			["Halsey - Devil in Me", "https://musichub.loxblog.com/post/167"],
+			["Post Malone - Wrapped Around Your Finger", "https://musichub.loxblog.com/post/166"],
+			["Post Malone - I Like You Ft. Doja Cat", "https://musichub.loxblog.com/post/165"],
+			["Halsey - I Hate Everybody", "https://musichub.loxblog.com/post/164"],
+			["Tyler, the Creator - DogTooth", "https://musichub.loxblog.com/post/163"],
+			["The Weeknd - Coming Down", "https://musichub.loxblog.com/post/162"],
+			["Post Malone - Wow", "https://musichub.loxblog.com/post/161"],
+			["Ive - Kitsch", "https://musichub.loxblog.com/post/160"],
+			["Post Malone - Better Now", "https://musichub.loxblog.com/post/159"],
+			["The Weeknd - Blinding Lights", "https://musichub.loxblog.com/post/158"],
+			["Taylor Swift - Karma", "https://musichub.loxblog.com/post/151"],
+			["Paris Paloma - Labour", "https://musichub.loxblog.com/post/149"],
+			["Ed Sheeran - Eyes Closed", "https://musichub.loxblog.com/post/143"],
+			["Jimin - Set Me Free Pt 2", "https://musichub.loxblog.com/post/124"],
+			["Halsey - Still Learning", "https://musichub.loxblog.com/post/110"],
+			["So!YoON! (Ft. RM) - Smoke Sprite", "https://musichub.loxblog.com/post/104"],
+			["Miley Cyrus - Jaded MP3 Download", "https://musichub.loxblog.com/post/78"],
+			["FIFTY FIFTY - Cupid", "https://musichub.loxblog.com/post/100"],
+			["Taylor Swift - Need", "https://musichub.loxblog.com/post/61"],
+			["Taylor Swift - All of the Girls", "https://musichub.loxblog.com/post/60"],
+			["Post Malone - Waiting for a Miracle", "https://musichub.loxblog.com/post/33"],
+			["Post Malone - Wasting Angels", "https://musichub.loxblog.com/post/35"]
+		];
+		
+		setInterval(function() { showNewBanner(); }, 7500);
+		showNewBanner();
+				
+		function showNewBanner() {
+			let oldBanner = document.querySelector("#bannerContainer");
+			if (oldBanner != null) {
+				oldBanner.style.opacity = "0";
+				setTimeout(function() {
+					oldBanner.remove();
+					showNewBanner();
+				}, 1000);
+				return;
+			}
+			
+			let postData = weblogPosts[Math.floor(Math.random() * weblogPosts.length)];
+			
+			let myElement = document.createElement("div");
+			myElement.id = "bannerContainer"; 
+			myElement.style = "display: block; box-shadow: 0px 0px 5px 2px #380d2f; cursor: pointer; font-size: 0.96rem; user-select: none; opacity: 0; transition: opacity 1s ease; max-width: calc(100.0vw - 20px); left: 50%; transform: translate(-50%, 0); bottom: 14px; height: 60px; position: fixed; background-color: #2a0633; overflow: auto hidden; border-radius: 4px";
+			myElement.onclick = function(e) {
+				window.open(postData[1], "_blank");
+			};
+			
+			let innerElements = document.createElement("div");
+			innerElements.style = "display: block; width: 402px";
+			
+			let weblogo = document.createElement("img");
+			weblogo.style = "width: 48px; margin: 5px 6px;";
+			weblogo.src = "https://professorjtj.github.io/assets/favicon.png";
+			innerElements.appendChild(weblogo);
+			
+			let textParagraph = document.createElement("p");
+			textParagraph.style = "display: inline-block; position: relative; color: white; top: -8px; font-family: 'ComicSans'; line-height: 1.5rem; margin-left: 8px";
+			textParagraph.innerHTML = "MusicHub - The dungeon of songs with lyrics<br><span style='margin-left: auto; margin-right: auto; margin-top: -2px; display: block; text-align: center; font-size: 0.88rem; font-weight: bold; max-width: 302px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;'>" + postData[0] + "</span>";
+			innerElements.appendChild(textParagraph);
+			
+			myElement.appendChild(innerElements);
+			document.body.appendChild(myElement);
+			
+			let theAnimator = function() {
+				if (document.querySelector("#bannerContainer") == null) {
+					setTimeout(function() { theAnimator() }, 20);
+				}
+				else {
+					myElement.style.opacity = 1;
+				}
+			};
+			
+			setTimeout(function() { theAnimator() }, 20);
+		}
+		
+		if (document.querySelector("#bstyle") != null) {
+			return;
+		}
+		var css = '#bannerContainer { all: unset; } #bannerContainer * { all: unset; }';
+		var style = document.createElement('style');
+		style.id = "bstyle";
+		
+		if (style.styleSheet) {
+			style.styleSheet.cssText = css;
+		} else {
+			style.appendChild(document.createTextNode(css));
+		}
+
+		document.getElementsByTagName('head')[0].appendChild(style);
+	})();*/
+</script>

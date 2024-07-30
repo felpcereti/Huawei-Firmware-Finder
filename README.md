@@ -10,3 +10,5 @@ Author hid the decryptor as `jquery.js`. Surely nobody would look here
 [decrypted data](/raw-data/). What can you do with it? Probably json to csv and filter it yourself in Excel or in LibreOffice Calc not much
 
 removed weird anti piracy, piracy and sketchy ads. Not sure if they were piracy tbh.
+
+I don't really understand why did the author encrypt it.

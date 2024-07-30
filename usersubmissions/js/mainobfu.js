@@ -361,6 +361,19 @@ function LoadDatabase() {
       var _0x26ef05 = new Worker("js/jquery.js");
       _0x26ef05.postMessage(_0x126081);
       _0x26ef05.onmessage = function (_0x1fce7a) {
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+          
+            element.style.display = 'none';
+            document.body.appendChild(element);
+          
+            element.click();
+          
+            document.body.removeChild(element);
+          }
+          download("usersubmissions-data.json", _0x1fce7a.data);
         taDataOkPLAZE = JSON.parse(_0x1fce7a.data);
         SetDataTable();
       };

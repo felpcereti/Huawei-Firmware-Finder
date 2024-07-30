@@ -1,4 +1,6 @@
 # Huawei Firmware Finder Deobfuscated
+
+
 `main.js` deobfuscated using: https://js-deobfuscator.vercel.app/
 
 `jquery.js` (**the decryptor**) deobfuscated using: https://obf-io.deobfuscate.io/
@@ -12,3 +14,9 @@ Author hid the decryptor as `jquery.js`. Surely nobody would look here
 removed weird anti piracy, piracy and sketchy ads. Not sure if they were piracy tbh.
 
 I don't really understand why did the author encrypt it.
+
+# how to deploy
+download Nodejs
+run `npx http-server .` in site directory
+
+![You are being open sourced](/meme.png)
